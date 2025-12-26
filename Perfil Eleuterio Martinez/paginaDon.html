@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleuterio Martínez: El Guardián de la Naturaleza Dominicana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Amazon Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <style>
+        /* Custom Font Settings */
+        body { font-family: 'Lato', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Merriweather', serif; }
+        
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Chart Container Specifics */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        /* Interactive Element Transitions */
+        .interactive-card {
+            transition: all 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Active Tab Styling */
+        .tab-active {
+            border-bottom: 2px solid #4d7c0f; /* green-700 */
+            color: #3f6212; /* green-800 */
+            font-weight: bold;
+        }
+
+        /* Book Cover Simulation (CSS Only) */
+        .book-spine {
+            box-shadow: inset 10px 0 20px rgba(0,0,0,0.1), 5px 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        .book-spine:hover {
+            transform: scale(1.02) rotateY(-5deg);
+        }
+        .book-binding {
+            border-left: 4px solid rgba(255,255,255,0.2);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased selection:bg-green-200 selection:text-green-900">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-stone-100/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <span class="text-2xl font-bold text-green-900 tracking-tight">EM</span>
+                    <span class="ml-2 text-sm text-stone-600 border-l border-stone-400 pl-2">Ing. Eleuterio Martínez</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#biografia" class="text-stone-600 hover:text-green-700 transition-colors text-sm font-medium uppercase tracking-wider">Biografía</a>
+                    <a href="#impacto" class="text-stone-600 hover:text-green-700 transition-colors text-sm font-medium uppercase tracking-wider">Impacto</a>
+                    <a href="#areas" class="text-stone-600 hover:text-green-700 transition-colors text-sm font-medium uppercase tracking-wider">Áreas</a>
+                    <a href="#publicaciones" class="text-stone-600 hover:text-green-700 transition-colors text-sm font-medium uppercase tracking-wider">Publicaciones</a>
+                    <!-- Tienda Link -->
+                    <a href="#libros" class="px-4 py-2 rounded-full bg-green-700 text-white hover:bg-green-600 transition-colors text-sm font-medium uppercase tracking-wider shadow-sm flex items-center gap-2">
+                        <i class="fas fa-shopping-cart"></i> Tienda
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-stone-600 hover:text-green-700 focus:outline-none">
+                        <span class="text-2xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-stone-100 border-t border-stone-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#biografia" class="block px-3 py-2 text-base font-medium text-stone-700 hover:text-green-700 hover:bg-stone-200 rounded-md">Biografía</a>
+                <a href="#impacto" class="block px-3 py-2 text-base font-medium text-stone-700 hover:text-green-700 hover:bg-stone-200 rounded-md">Impacto</a>
+                <a href="#areas" class="block px-3 py-2 text-base font-medium text-stone-700 hover:text-green-700 hover:bg-stone-200 rounded-md">Áreas Protegidas</a>
+                <a href="#publicaciones" class="block px-3 py-2 text-base font-medium text-stone-700 hover:text-green-700 hover:bg-stone-200 rounded-md">Publicaciones</a>
+                <a href="#libros" class="block px-3 py-2 text-base font-bold text-green-800 bg-green-50 hover:bg-green-100 rounded-md">🛒 Tienda de Libros</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Static Background) -->
+    <header class="relative bg-stone-900 overflow-hidden">
+        <div class="absolute inset-0">
+            <!-- Abstract background simulating forest canopy -->
+            <div class="absolute inset-0 bg-gradient-to-br from-green-900 to-stone-900 opacity-90"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 flex flex-col items-center text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-stone-50 mb-6 leading-tight">
+                La Voz de los Bosques <br> <span class="text-green-400">Dominicanos</span>
+            </h1>
+            <p class="max-w-2xl text-xl text-stone-300 mb-10 font-light">
+                Ingeniero Forestal, Ecólogo y Defensor Incansable del Patrimonio Natural. Explorando la vida y obra de <strong>Eleuterio Martínez</strong>.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#biografia" class="px-8 py-3 bg-green-700 text-white rounded-full font-semibold hover:bg-green-600 transition-colors shadow-lg shadow-green-900/50">
+                    Conocer su Historia
+                </a>
+                <a href="#libros" class="px-8 py-3 bg-amber-600 text-white rounded-full font-semibold hover:bg-amber-500 transition-colors shadow-lg flex items-center justify-center gap-2">
+                    <i class="fas fa-book-open"></i> Ver Libros Disponibles
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: Biography & Philosophy -->
+    <section id="biografia" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div>
+                <div class="mb-6">
+                    <span class="text-green-700 font-bold uppercase tracking-widest text-sm">Perfil Profesional</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mt-2">Una Vida Dedicada a la Ciencia y la Conservación</h2>
+                </div>
+                <p class="text-lg text-stone-600 mb-6 leading-relaxed">
+                    Eleuterio Martínez es una de las figuras más respetadas en la ecología de la República Dominicana. Como Ingeniero Forestal y Presidente de la Academia de Ciencias, ha dedicado décadas a la investigación de los ecosistemas tropicales y la defensa de las áreas protegidas.
+                </p>
+                
+                <!-- Interactive Tabs for Bio Details -->
+                <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden">
+                    <div class="flex border-b border-stone-200">
+                        <button onclick="switchTab('academic')" id="tab-academic" class="flex-1 py-4 text-center text-sm font-semibold text-stone-600 hover:bg-stone-50 focus:outline-none transition-colors tab-active">
+                            Formación
+                        </button>
+                        <button onclick="switchTab('roles')" id="tab-roles" class="flex-1 py-4 text-center text-sm font-semibold text-stone-600 hover:bg-stone-50 focus:outline-none transition-colors">
+                            Liderazgo
+                        </button>
+                        <button onclick="switchTab('awards')" id="tab-awards" class="flex-1 py-4 text-center text-sm font-semibold text-stone-600 hover:bg-stone-50 focus:outline-none transition-colors">
+                            Reconocimientos
+                        </button>
+                    </div>
+                    <div class="p-6 h-64 overflow-y-auto" id="tab-content">
+                        <!-- Content injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Philosophy Cards -->
+            <div class="grid grid-cols-1 gap-6">
+                <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                    <h3 class="text-xl font-bold text-green-900 mb-3">🛡️ Defensa Ambiental</h3>
+                    <p class="text-stone-700">
+                        Conocido por su firme postura en la protección de áreas críticas como <strong>Loma Miranda</strong> y <strong>Bahía de las Águilas</strong>, utilizando la ciencia como escudo contra la explotación insostenible.
+                    </p>
+                </div>
+                <div class="bg-stone-100 p-6 rounded-xl border border-stone-200">
+                    <h3 class="text-xl font-bold text-stone-900 mb-3">📚 Divulgación Científica</h3>
+                    <p class="text-stone-700">
+                        Autor de numerosas obras que documentan la flora y fauna de la isla, asegurando que el conocimiento sobre la biodiversidad dominicana sea accesible para futuras generaciones.
+                    </p>
+                </div>
+                <div class="bg-amber-50 p-6 rounded-xl border border-amber-100">
+                    <h3 class="text-xl font-bold text-amber-900 mb-3">🌍 Visión Global</h3>
+                    <p class="text-stone-700">
+                        Promotor incansable de las <strong>Reservas de la Biosfera</strong> ante la UNESCO, integrando a la República Dominicana en la red mundial de conservación.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Impact Dashboard (Charts) -->
+    <section id="impacto" class="py-20 bg-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-green-700 font-bold uppercase tracking-widest text-sm">Análisis de Impacto</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mt-2">La Huella Ecológica de su Trabajo</h2>
+                <p class="mt-4 text-stone-600 max-w-3xl mx-auto">
+                    A través de su gestión y activismo, el Ing. Martínez ha influido directamente en la preservación de miles de kilómetros cuadrados de ecosistemas vitales.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Chart 1: Ecosystems Focus -->
+                <div class="flex flex-col">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-stone-900">Enfoque de Investigación</h3>
+                        <p class="text-sm text-stone-500">Distribución estimada de sus esfuerzos por tipo de ecosistema.</p>
+                    </div>
+                    <div class="bg-stone-50 rounded-xl p-6 border border-stone-200 flex-grow flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="ecosystemChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Timeline of Impact -->
+                <div class="flex flex-col">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-bold text-stone-900">Hitos de Conservación (Décadas)</h3>
+                        <p class="text-sm text-stone-500">Volumen de publicaciones y áreas defendidas activamente.</p>
+                    </div>
+                    <div class="bg-stone-50 rounded-xl p-6 border border-stone-200 flex-grow flex items-center justify-center">
+                        <div class="chart-container">
+                            <canvas id="timelineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Protected Areas Interactive Map (Abstract) -->
+    <section id="areas" class="py-20 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Text Context -->
+                <div class="lg:col-span-1">
+                    <h2 class="text-3xl font-bold text-stone-900 mb-4">Guardían de las Reservas</h2>
+                    <p class="text-stone-600 mb-6">
+                        La labor del Ing. Martínez se extiende por toda la geografía nacional. Seleccione una región para conocer su aporte específico en la preservación.
+                    </p>
+                    <div class="space-y-3" id="area-buttons">
+                        <!-- Buttons generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Interactive Display Area -->
+                <div class="lg:col-span-2">
+                    <div id="area-display" class="bg-white rounded-2xl p-8 shadow-lg h-full border border-stone-200 relative overflow-hidden transition-all duration-500">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 text-9xl">🌿</div>
+                        <h3 id="area-title" class="text-2xl font-bold text-green-800 mb-2">Seleccione una Zona</h3>
+                        <div class="h-1 w-20 bg-green-500 mb-6"></div>
+                        <p id="area-desc" class="text-stone-600 text-lg leading-relaxed mb-6">
+                            Explore las áreas donde la intervención científica y activista de Eleuterio Martínez ha marcado la diferencia.
+                        </p>
+                        <div id="area-stats" class="grid grid-cols-2 gap-4 hidden">
+                            <div class="p-4 bg-stone-50 rounded-lg">
+                                <span class="block text-xs text-stone-500 uppercase">Ecosistema Principal</span>
+                                <span class="block font-bold text-stone-800" id="stat-eco">-</span>
+                            </div>
+                            <div class="p-4 bg-stone-50 rounded-lg">
+                                <span class="block text-xs text-stone-500 uppercase">Rol Desempeñado</span>
+                                <span class="block font-bold text-stone-800" id="stat-role">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Publications Library -->
+    <section id="publicaciones" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-stone-200">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-10">
+            <div>
+                <span class="text-green-700 font-bold uppercase tracking-widest text-sm">Biblioteca Verde</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mt-2">Aportes Bibliográficos</h2>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <select id="pub-filter" class="bg-white border border-stone-300 text-stone-700 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent cursor-pointer">
+                    <option value="all">Todas las Categorías</option>
+                    <option value="book">Libros</option>
+                    <option value="article">Artículos/Ensayos</option>
+                    <option value="report">Informes Técnicos</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="publications-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards injected via JS -->
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Amazon Book Store / Catalog -->
+    <section id="libros" class="py-24 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="inline-block py-1 px-3 rounded-full bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2">Disponible en Amazon</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-stone-900">Catálogo de Obras Selectas</h2>
+                <p class="mt-4 text-stone-600 max-w-2xl mx-auto text-lg">
+                    Adquiera las ediciones impresas directamente en Amazon para apoyar la difusión del conocimiento ecológico.
+                </p>
+            </div>
+
+            <!-- Books Grid -->
+            <div id="book-catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Book Items injected via JS -->
+            </div>
+            
+            <div class="mt-12 text-center">
+                 <a href="https://www.amazon.com/s?k=Eleuterio+Martinez+Libros" target="_blank" class="text-stone-500 hover:text-amber-600 underline text-sm transition-colors">
+                    Ver todos los resultados para Eleuterio Martínez en Amazon &rarr;
+                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-white font-bold text-lg mb-4">Sobre este Proyecto</h3>
+                <p class="text-sm leading-relaxed">
+                    Esta plataforma es un tributo digital a la trayectoria del Ing. Eleuterio Martínez, consolidando información pública para resaltar la importancia de la ingeniería forestal y el activismo científico.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-4">Enlaces de Interés</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-green-400 transition-colors">Academia de Ciencias RD</a></li>
+                    <li><a href="#" class="hover:text-green-400 transition-colors">Ministerio de Medio Ambiente</a></li>
+                    <li><a href="#libros" class="hover:text-green-400 transition-colors">Catálogo de Libros</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-4">Contacto</h3>
+                <p class="text-sm mb-2">Para consultas académicas:</p>
+                <a href="#" class="inline-flex items-center px-4 py-2 bg-stone-800 border border-stone-700 rounded-lg hover:bg-stone-700 transition-colors text-white">
+                    ✉️ Contactar Oficina
+                </a>
+            </div>
+        </div>
+        <div class="mt-12 text-center text-xs text-stone-600 pt-8 border-t border-stone-800">
+            &copy; 2023 Perfil Digital Eleuterio Martínez.
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // --- Data Store ---
+        
+        const bioData = {
+            academic: `
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-green-600 mr-2 text-xl">🎓</span>
+                        <div>
+                            <strong class="block text-stone-900">Ingeniería Forestal</strong>
+                            <span class="text-sm text-stone-600">Formación base centrada en la gestión sostenible de recursos.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-600 mr-2 text-xl">🔬</span>
+                        <div>
+                            <strong class="block text-stone-900">Especialización en Ecología Tropical</strong>
+                            <span class="text-sm text-stone-600">Estudios avanzados sobre la dinámica de los bosques húmedos.</span>
+                        </div>
+                    </li>
+                </ul>
+            `,
+            roles: `
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-green-600 mr-2 text-xl">🏛️</span>
+                        <div>
+                            <strong class="block text-stone-900">Presidente Academia de Ciencias</strong>
+                            <span class="text-sm text-stone-600">Liderando la institución científica más prestigiosa del país.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-600 mr-2 text-xl">🌳</span>
+                        <div>
+                            <strong class="block text-stone-900">Comisión de Medio Ambiente</strong>
+                            <span class="text-sm text-stone-600">Evaluación de impactos ambientales en proyectos nacionales.</span>
+                        </div>
+                    </li>
+                </ul>
+            `,
+            awards: `
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="text-green-600 mr-2 text-xl">🏆</span>
+                        <div>
+                            <strong class="block text-stone-900">Premio Nacional de Ciencias</strong>
+                            <span class="text-sm text-stone-600">Reconocimiento a su trayectoria investigativa.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-600 mr-2 text-xl">⭐</span>
+                        <div>
+                            <strong class="block text-stone-900">Personaje del Año</strong>
+                            <span class="text-sm text-stone-600">Otorgado por su defensa de Loma Miranda.</span>
+                        </div>
+                    </li>
+                </ul>
+            `
+        };
+
+        const protectedAreas = [
+            { id: 'bahoruco', name: 'Sierra de Bahoruco', desc: 'Una de las áreas de mayor biodiversidad. Martínez ha realizado estudios sobre su flora endémica.', eco: 'Bosque Nublado', role: 'Investigador' },
+            { id: 'miranda', name: 'Loma Miranda', desc: 'Su peritaje técnico demostró el valor hidrológico incalculable de esta zona.', eco: 'Bosque Húmedo', role: 'Perito Técnico' },
+            { id: 'aguilas', name: 'Bahía de las Águilas', desc: 'Defensa férrea contra el desarrollo turístico masivo no regulado.', eco: 'Zona Costera', role: 'Asesor Científico' },
+            { id: 'valle', name: 'Valle Nuevo', desc: 'Conocida como la "Madre de las Aguas". Promotor de restauración.', eco: 'Bosque de Montaña', role: 'Promotor' }
+        ];
+
+        const publications = [
+            { title: "La Riqueza de los Bosques Dominicanos", category: "book", year: 2010, summary: "Compendio detallado de las especies forestales." },
+            { title: "Impacto Minero en Ecosistemas", category: "report", year: 2014, summary: "Informe técnico sobre Loma Miranda." },
+            { title: "Reservas de la Biosfera", category: "article", year: 2018, summary: "Ensayo sobre la importancia de la designación UNESCO." },
+            { title: "Flora Endémica de la Hispaniola", category: "book", year: 2005, summary: "Atlas fotográfico de plantas únicas." },
+            { title: "Gestión de Cuencas", category: "report", year: 2020, summary: "Propuesta para el manejo sostenible del agua." },
+            { title: "El Bosque Seco: Un Tesoro Oculto", category: "article", year: 2012, summary: "Análisis de la biodiversidad en zonas áridas." }
+        ];
+
+        // Book Catalog with Search Links
+        const booksForSale = [
+            { title: "Ecología de la Hispaniola", price: "Ver precio", color: "bg-green-800", year: 2021, isbn: "978-X-XXXXX" },
+            { title: "Flora Endémica Ilustrada", price: "Ver precio", color: "bg-amber-700", year: 2005, isbn: "978-X-XXXXX" },
+            { title: "La Riqueza de los Bosques", price: "Ver precio", color: "bg-emerald-700", year: 2010, isbn: "978-X-XXXXX" },
+            { title: "Áreas Protegidas: Guía", price: "Ver precio", color: "bg-stone-700", year: 2018, isbn: "978-X-XXXXX" }
+        ];
+
+        // --- Interaction Logic ---
+
+        function switchTab(tabId) {
+            document.getElementById('tab-content').innerHTML = bioData[tabId];
+            const tabs = ['academic', 'roles', 'awards'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                if (t === tabId) {
+                    el.classList.add('tab-active', 'text-stone-800');
+                    el.classList.remove('text-stone-600');
+                } else {
+                    el.classList.remove('tab-active', 'text-stone-800');
+                    el.classList.add('text-stone-600');
+                }
+            });
+        }
+
+        function renderAreaButtons() {
+            const container = document.getElementById('area-buttons');
+            container.innerHTML = protectedAreas.map(area => `
+                <button onclick="selectArea('${area.id}')" 
+                    class="w-full text-left px-5 py-4 rounded-lg bg-white border border-stone-200 hover:border-green-500 hover:bg-green-50 transition-all duration-200 group flex justify-between items-center shadow-sm">
+                    <span class="font-semibold text-stone-700 group-hover:text-green-800">${area.name}</span>
+                    <span class="text-stone-400 group-hover:text-green-600">→</span>
+                </button>
+            `).join('');
+        }
+
+        function selectArea(id) {
+            const area = protectedAreas.find(a => a.id === id);
+            if (!area) return;
+            const display = document.getElementById('area-display');
+            document.getElementById('area-title').innerText = area.name;
+            document.getElementById('area-desc').innerText = area.desc;
+            document.getElementById('stat-eco').innerText = area.eco;
+            document.getElementById('stat-role').innerText = area.role;
+            document.getElementById('area-stats').classList.remove('hidden');
+            display.classList.remove('opacity-50');
+            setTimeout(() => display.classList.add('opacity-100'), 50);
+        }
+
+        function renderPublications(filter = 'all') {
+            const grid = document.getElementById('publications-grid');
+            const filtered = filter === 'all' ? publications : publications.filter(p => p.category === filter);
+            grid.innerHTML = filtered.map(pub => {
+                let icon = '📄';
+                let typeColor = 'text-stone-500';
+                if (pub.category === 'book') { icon = '📘'; typeColor = 'text-blue-600'; }
+                if (pub.category === 'report') { icon = '📊'; typeColor = 'text-amber-600'; }
+                if (pub.category === 'article') { icon = '📰'; typeColor = 'text-green-600'; }
+                const typeLabel = pub.category === 'book' ? 'Libro' : (pub.category === 'report' ? 'Informe' : 'Artículo');
+                return `
+                <div class="interactive-card bg-white p-6 rounded-xl border border-stone-200 shadow-sm flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-2xl">${icon}</span>
+                            <span class="text-xs font-bold uppercase tracking-wider ${typeColor} bg-stone-50 px-2 py-1 rounded">${typeLabel}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-2 leading-snug">${pub.title}</h3>
+                        <p class="text-sm text-stone-600 mb-4">${pub.summary}</p>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // --- Render Book Catalog with Amazon Links ---
+        function renderBookCatalog() {
+            const grid = document.getElementById('book-catalog-grid');
+            
+            grid.innerHTML = booksForSale.map(book => {
+                // Generate a generic search link for Amazon based on title and author
+                const amazonSearchUrl = `https://www.amazon.com/s?k=${encodeURIComponent(book.title + " Eleuterio Martinez")}`;
+                
+                return `
+                <div class="group flex flex-col items-center">
+                    <!-- CSS Generated Book Cover - Clickable -->
+                    <a href="${amazonSearchUrl}" target="_blank" class="block">
+                        <div class="book-spine relative w-48 h-72 ${book.color} rounded-r-md rounded-l-sm shadow-xl flex flex-col justify-between p-4 mb-6 cursor-pointer">
+                            <div class="book-binding h-full absolute left-2 top-0 bottom-0"></div>
+                            <div class="ml-4 flex flex-col h-full text-center items-center justify-center">
+                                <h4 class="text-white font-serif font-bold text-lg leading-tight mb-2 opacity-90">${book.title}</h4>
+                                <div class="w-8 h-0.5 bg-white/30 my-2"></div>
+                                <span class="text-white/70 text-xs uppercase tracking-widest">Martínez</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 opacity-50">
+                                <span class="text-white text-xs font-mono">${book.year}</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Book Details & Amazon Button -->
+                    <div class="text-center w-full">
+                        <h3 class="font-bold text-stone-800 text-lg mb-1">${book.title}</h3>
+                        <div class="flex items-center justify-center mt-3">
+                            <a href="${amazonSearchUrl}" target="_blank" 
+                               class="flex items-center gap-2 text-xs bg-[#232F3E] text-white px-4 py-2 rounded hover:bg-[#FF9900] hover:text-black transition-colors uppercase font-bold tracking-wider shadow-md group">
+                                <i class="fab fa-amazon text-lg"></i>
+                                <span>Ver en Amazon</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // --- Charts Initialization ---
+        function initCharts() {
+            const ctx1 = document.getElementById('ecosystemChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Bosque Nublado', 'Bosque Seco', 'Costero/Marino', 'Urbano'],
+                    datasets: [{
+                        data: [40, 25, 20, 15],
+                        backgroundColor: ['#166534', '#ca8a04', '#0ea5e9', '#78716c'],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { boxWidth: 15 } }
+                    }
+                }
+            });
+
+            const ctx2 = document.getElementById('timelineChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: ['1990s', '2000s', '2010s', '2020s'],
+                    datasets: [
+                        {
+                            label: 'Áreas Defendidas',
+                            data: [2, 5, 8, 4],
+                            backgroundColor: '#4d7c0f',
+                            borderRadius: 4,
+                            order: 2
+                        },
+                        {
+                            label: 'Publicaciones',
+                            data: [3, 6, 12, 5],
+                            type: 'line',
+                            borderColor: '#d97706',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            pointRadius: 4,
+                            order: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, grid: { color: '#e7e5e4' } },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        // --- Init ---
+        document.addEventListener('DOMContentLoaded', () => {
+            switchTab('academic');
+            renderAreaButtons();
+            selectArea('bahoruco');
+            renderPublications();
+            renderBookCatalog(); // Updated for Amazon
+            initCharts();
+
+            document.getElementById('pub-filter').addEventListener('change', (e) => {
+                renderPublications(e.target.value);
+            });
+
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+        });
+
+    </script>
+</body>
+</html>
